@@ -1,0 +1,14 @@
+// We first organize by joining both connect and disconnected calls per callconnectionID, to get all unique call events from start to end of a call
+PhoneCalls
+| where EventType == 'Connect'
+| join kind=inner(
+    PhoneCalls
+    | where EventType == 'Disconnect'
+    | extend DisconnectProperties = Properties
+) on CallConnectionId
+// Next, we filter based on the call property where the receiver dropped the call
+| where DisconnectProperties.DisconnectedBy == 'Destination'
+| extend Destination=Properties.Destination, Origin=tostring(Properties.Origin)
+| summarize count() by Origin, bin(Timestamp, 1h) // We then summarize per caller and number of times they call per hour
+| summarize avg(count_) by Origin 
+// We get an average call attempts per caller, here we can identify suspicious high number of call attempts per hour on average
