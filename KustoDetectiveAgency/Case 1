@@ -1,1 +1,10 @@
-
+// Used the SQL query and used EXPLAIN to have it translated to KQL, 
+// afterwards just added lines 5 and 6 to remove negatives and duplicates
+Costs
+| join kind=inner 
+(Consumption
+| where Consumed > 0 // remove negative values
+| distinct Timestamp, HouseholdId, MeterType, Consumed // remove duplicates
+| project-rename ['Consumption.MeterType']=MeterType) on ($left.MeterType == $right.['Consumption.MeterType'])
+| summarize TotalCost=sum(__sql_multiply(Consumed, Cost))
+| project TotalCost
