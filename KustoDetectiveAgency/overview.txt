@@ -1,0 +1,5 @@
+source: https://detective.kusto.io/
+
+i use this resource to learn advanced KQL concepts, and creativity in how to manipulate data for certain investigations and scenarios
+
+this where i put some of my solutions per case
