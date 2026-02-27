@@ -14,5 +14,8 @@ Will also contain some custom PowerShell/Python scripts created for leveraging M
 
 **Some nice youtube resources**
 - [Understanding Microsoft Sentinel Analytics] https://www.youtube.com/watch?v=MsvlrHLDZ3s
-- [Threat Hunting] https://www.youtube.com/watch?v=i7N2rTr2aHc
+- [Threat Hunting] https://www.youtube.com/watch?v=i7N2rTr2aHc, https://www.youtube.com/watch?v=N8nde4oPZ7U
 - [ASIM] https://www.youtube.com/watch?v=BV90i9hhwrs
+
+**Azure Sentinel Solutions Training**
+- https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Training/Azure-Sentinel-Training-Lab
